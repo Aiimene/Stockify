@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../config/app_colors.dart';
+import '../widgets/custom_app_bar.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
@@ -22,112 +24,96 @@ class _ProductListScreenState extends State<ProductListScreen> {
       'price': '1500 DZD',
       'stock': 1,
       'image': 'assets/images/creme.png',
-      'color': Color(0xFFE8F5F0),
     },
     {
       'name': 'Matte Lipstick',
       'price': '850 DZD',
       'stock': 120,
       'image': 'assets/images/lipstick.png',
-      'color': Color(0xFF8B4646),
     },
     {
       'name': 'Vitamin C Serum',
       'price': '2200 DZD',
       'stock': 30,
       'image': 'assets/images/serum.png',
-      'color': Color(0xFFE6B84D),
     },
     {
       'name': 'Sunscreen SPF 50',
       'price': '1800 DZD',
       'stock': 8,
       'image': 'assets/images/sunscreen.png',
-      'color': Color(0xFFD4B896),
     },
     {
       'name': 'Eyeshadow Palette',
       'price': '3500 DZD',
       'stock': 75,
       'image': 'assets/images/eyeshadow.png',
-      'color': Color(0xFFE6B8B0),
     },
     {
       'name': 'Nourishing Shampoo',
       'price': '1200 DZD',
       'stock': 40,
       'image': 'assets/images/shampoo.png',
-      'color': Color(0xFF6B8E6B),
     },
     {
       'name': 'Anti-Aging Serum',
       'price': '2850 DZD',
       'stock': 25,
       'image': 'assets/images/anti-age.png',
-      'color': Color(0xFFD1C4E9),
     },
     {
       'name': 'Cleansing Gel',
       'price': '1250 DZD',
       'stock': 60,
       'image': 'assets/images/cleanser.png',
-      'color': Color(0xFFE0F2F1),
     },
     {
       'name': 'Face Toner',
       'price': '1650 DZD',
       'stock': 45,
       'image': 'assets/images/lotion.png',
-      'color': Color(0xFFE3F2FD),
     },
     {
       'name': 'Night Cream',
       'price': '1950 DZD',
       'stock': 35,
       'image': 'assets/images/night-cream.png',
-      'color': Color(0xFFFFEBEE),
     },
     {
       'name': 'Mascara Volume Plus',
       'price': '1500 DZD',
       'stock': 90,
       'image': 'assets/images/mascara.png',
-      'color': Color(0xFFFCE4EC),
     },
     {
       'name': 'Foundation Natural',
       'price': '1950 DZD',
       'stock': 50,
       'image': 'assets/images/foundation.png',
-      'color': Color(0xFFFFEBEE),
     },
     {
       'name': 'Face Mask Hydrating',
       'price': '1550 DZD',
       'stock': 42,
       'image': 'assets/images/mask.png',
-      'color': Color(0xFFFFF9C4),
     },
     {
       'name': 'Argan Oil',
       'price': '2100 DZD',
       'stock': 28,
       'image': 'assets/images/oil.png',
-      'color': Color(0xFFFFE0B2),
     },
     {
       'name': 'Micellar Water',
       'price': '1350 DZD',
       'stock': 65,
       'image': 'assets/images/micellar.png',
-      'color': Color(0xFFE1F5FE),
     },
     {
       'name': 'Body Lotion',
       'price': '1450 DZD',
       'stock': 55,
       'image': 'assets/images/body-lotion.png',
-      'color': Color(0xFFF3E5F5),
     },
   ];
 
@@ -249,8 +235,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
               Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF6366F1),
-              foregroundColor: Colors.white,
+              backgroundColor: AppColors.primary,
+              foregroundColor: AppColors.textOnPrimary,
+              elevation: 0,
             ),
             child: const Text('Apply'),
           ),
@@ -262,18 +249,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: const Text(
-          'Products',
-          style: TextStyle(
-            color: Color(0xFF1A1A1A),
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      backgroundColor: AppColors.background,
+      appBar: const CustomAppBar(
+        title: 'Products',
+        showBackButton: false,
       ),
       body: Column(
         children: [
@@ -349,9 +328,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
                         _maxPriceController.clear();
                       });
                     },
-                    backgroundColor: const Color(0xFF6366F1).withOpacity(0.1),
+                    backgroundColor: AppColors.primaryLight.withOpacity(0.1),
                     labelStyle: const TextStyle(
-                      color: Color(0xFF6366F1),
+                      color: AppColors.primary,
                       fontSize: 12,
                     ),
                   ),
@@ -370,14 +349,14 @@ class _ProductListScreenState extends State<ProductListScreen> {
                           Icon(
                             Icons.search_off,
                             size: 64,
-                            color: Colors.grey[400],
+                            color: AppColors.textTertiary,
                           ),
                           const SizedBox(height: 16),
                           Text(
                             'No products found',
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.grey[600],
+                              color: AppColors.textSecondary,
                             ),
                           ),
                         ],
@@ -404,8 +383,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
         onPressed: () {
           Navigator.pushNamed(context, '/add-product');
         },
-        backgroundColor: const Color(0xFF6366F1),
-        child: const Icon(Icons.add, color: Colors.white),
+        backgroundColor: AppColors.primary,
+        child: const Icon(Icons.add, color: AppColors.textOnPrimary),
       ),
     );
   }
@@ -443,7 +422,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 flex: 3,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: product['color'] ?? Colors.grey[200],
+                    color: AppColors.productImagePlaceholder,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16),
@@ -460,7 +439,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                         return Icon(
                           Icons.shopping_bag_outlined,
                           size: 60,
-                          color: Colors.grey[400],
+                          color: AppColors.textTertiary,
                         );
                       },
                     ),
@@ -539,7 +518,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 child: Icon(
                   Icons.edit_outlined,
                   size: 16,
-                  color: Colors.grey[700],
+                  color: AppColors.iconPrimary,
                 ),
               ),
             ),

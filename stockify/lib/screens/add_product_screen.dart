@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'dart:io';
+import '../config/app_colors.dart';
+import '../widgets/custom_app_bar.dart';
 
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({super.key});
@@ -66,7 +68,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               width: 40,
               height: 4,
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                color: AppColors.borderLight,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -185,7 +187,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Product saved successfully!'),
-          backgroundColor: Colors.green,
+          backgroundColor: AppColors.success,
         ),
       );
       Navigator.pop(context);
@@ -195,22 +197,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF1A1A1A)),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          'Add Product',
-          style: TextStyle(
-            color: Color(0xFF1A1A1A),
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+      backgroundColor: AppColors.background,
+      appBar: const CustomAppBar(
+        title: 'Add Product',
+        showBackButton: true,
       ),
       body: Form(
         key: _formKey,
@@ -347,7 +337,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: AppColors.textOnPrimary,
                       ),
                     ),
                   ),
@@ -417,7 +407,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: TextStyle(
-              color: Colors.grey[400],
+              color: AppColors.textTertiary,
               fontSize: 14,
             ),
             suffixIcon: suffixIcon,
@@ -425,15 +415,15 @@ class _AddProductScreenState extends State<AddProductScreen> {
             fillColor: Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Colors.grey[300]!),
+              borderSide: BorderSide(color: AppColors.inputBorder),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Colors.grey[300]!),
+              borderSide: BorderSide(color: AppColors.inputBorder),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Color(0xFF6366F1), width: 2),
+              borderSide: const BorderSide(color: AppColors.primary, width: 2),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
@@ -479,7 +469,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 Icon(
                   Icons.image_outlined,
                   size: 20,
-                  color: Colors.grey[700],
+                  color: AppColors.iconPrimary,
                 ),
                 const SizedBox(width: 8),
                 const Text(
@@ -527,9 +517,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.textOnPrimary,
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.grey[300]!),
+                    border: Border.all(color: AppColors.borderLight),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -545,7 +535,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: Colors.grey[700],
+                          color: AppColors.iconPrimary,
                         ),
                       ),
                     ],
@@ -558,9 +548,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.textOnPrimary,
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.grey[300]!),
+                    border: Border.all(color: AppColors.borderLight),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -576,7 +566,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: Colors.grey[700],
+                          color: AppColors.iconPrimary,
                         ),
                       ),
                     ],
@@ -589,7 +579,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               'Supports: JPG, PNG, WEBP',
               style: TextStyle(
                 fontSize: 12,
-                color: Colors.grey[500],
+                color: AppColors.textSecondary,
               ),
             ),
           ],
@@ -627,7 +617,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           height: 70,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey[300]!),
+            border: Border.all(color: AppColors.borderLight),
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12),
@@ -650,7 +640,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               child: const Icon(
                 Icons.close,
                 size: 16,
-                color: Colors.white,
+                color: AppColors.textOnPrimary,
               ),
             ),
             onPressed: () => _removeImage(index),
@@ -667,9 +657,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
         width: 70,
         height: 70,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.textOnPrimary,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey[300]!),
+          border: Border.all(color: AppColors.borderLight),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -680,7 +670,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               'Add More',
               style: TextStyle(
                 fontSize: 10,
-                color: Colors.grey[600],
+                color: AppColors.textSecondary,
               ),
             ),
           ],
@@ -736,7 +726,7 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Barcode detected: $code'),
-                      backgroundColor: Colors.green,
+                      backgroundColor: AppColors.success,
                       duration: const Duration(seconds: 1),
                     ),
                   );
@@ -780,7 +770,7 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
                 'Position the barcode within the frame',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textOnPrimary,
                   fontSize: 16,
                 ),
               ),

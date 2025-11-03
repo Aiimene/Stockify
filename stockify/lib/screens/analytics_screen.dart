@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import '../config/app_colors.dart';
+import '../widgets/custom_app_bar.dart';
 
 class AnalyticsScreen extends StatefulWidget {
   const AnalyticsScreen({super.key});
@@ -32,70 +34,70 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
       'name': 'Serum Éclat',
       'unitsSold': '1,230 units sold',
       'price': 'DA 245K',
-      'color': Color(0xFFE8F5E9),
+      'color': AppColors.successLight,
       'image': 'assets/images/serum.png',
     },
     {
       'name': 'Crème Hydratante',
       'unitsSold': '980 units sold',
       'price': 'DA 182K',
-      'color': Color(0xFFFFF3E0),
+      'color': AppColors.warningLight,
       'image': 'assets/images/creme.png',
     },
     {
       'name': 'Mascara Volume',
       'unitsSold': '850 units sold',
       'price': 'DA 150K',
-      'color': Color(0xFFFCE4EC),
+      'color': AppColors.errorLight,
       'image': 'assets/images/mascara.png',
     },
     {
       'name': 'Foundation Parfait',
       'unitsSold': '720 units sold',
       'price': 'DA 195K',
-      'color': Color(0xFFFFEBEE),
+      'color': AppColors.errorLight,
       'image': 'assets/images/foundation.png',
     },
     {
       'name': 'Rouge à Lèvres',
       'unitsSold': '690 units sold',
       'price': 'DA 135K',
-      'color': Color(0xFFF3E5F5),
+      'color': AppColors.notificationPriceChangeBg,
       'image': 'assets/images/lipstick.png',
     },
     {
       'name': 'Lotion Tonique',
       'unitsSold': '580 units sold',
       'price': 'DA 165K',
-      'color': Color(0xFFE3F2FD),
+      'color': AppColors.infoLight,
       'image': 'assets/images/lotion.png',
     },
     {
       'name': 'Gel Nettoyant',
       'unitsSold': '540 units sold',
       'price': 'DA 125K',
-      'color': Color(0xFFE0F2F1),
+      'color': AppColors.successLight,
       'image': 'assets/images/cleanser.png',
     },
     {
       'name': 'Masque Visage',
       'unitsSold': '480 units sold',
       'price': 'DA 155K',
-      'color': Color(0xFFFFF9C4),
+      'color': AppColors.warningLight,
       'image': 'assets/images/mask.png',
     },
     {
       'name': 'Huile Argan',
       'unitsSold': '420 units sold',
       'price': 'DA 210K',
-      'color': Color(0xFFFFE0B2),
+      'color': AppColors.warningLight,
       'image': 'assets/images/oil.png',
     },
     {
       'name': 'Crème Anti-Âge',
       'unitsSold': '380 units sold',
       'price': 'DA 285K',
-      'color': Color(0xFFD1C4E9),
+      'color': AppColors.notificationPriceChangeBg,
       'image': 'assets/images/anti-age.png',
     },
   ];
@@ -127,7 +129,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.light(
-              primary: Color(0xFF3B82F6),
+              primary: AppColors.primary,
             ),
           ),
           child: child!,
@@ -145,11 +147,10 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
-      appBar: AppBar(
-        title: const Text('Analytics'),
-        backgroundColor: Colors.white,
-        elevation: 0,
+      backgroundColor: AppColors.background,
+      appBar: const CustomAppBar(
+        title: 'Analytics',
+        showBackButton: false,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -171,7 +172,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                   icon: Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.surface,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.grey[300]!),
                     ),
@@ -272,7 +273,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.surface,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
@@ -290,12 +291,12 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                       Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF10B981).withOpacity(0.1),
+                          color: AppColors.accentLight.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Icon(
                           Icons.trending_up,
-                          color: Color(0xFF10B981),
+                          color: AppColors.accent,
                           size: 20,
                         ),
                       ),
@@ -305,7 +306,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF1A1A1A),
+                          color: AppColors.textPrimary,
                         ),
                       ),
                     ],
@@ -340,7 +341,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.grey[600],
+                                      color: AppColors.textSecondary,
                                     ),
                                   );
                                 },
@@ -369,7 +370,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                           style: TextStyle(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w500,
-                                            color: Colors.grey[600],
+                                            color: AppColors.textSecondary,
                                           ),
                                         ),
                                       );
@@ -400,7 +401,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                           lineTouchData: LineTouchData(
                             enabled: true,
                             touchTooltipData: LineTouchTooltipData(
-                              getTooltipColor: (touchedSpot) => const Color(0xFF10B981),
+                              getTooltipColor: (touchedSpot) => AppColors.accent,
                               tooltipRoundedRadius: 8,
                               tooltipPadding: const EdgeInsets.symmetric(
                                 horizontal: 12,
@@ -411,7 +412,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                   return LineTooltipItem(
                                     'DA ${(spot.y * 1000).toStringAsFixed(0)}',
                                     const TextStyle(
-                                      color: Colors.white,
+                                      color: AppColors.surface,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13,
                                     ),
@@ -424,7 +425,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                               return spotIndexes.map((spotIndex) {
                                 return TouchedSpotIndicatorData(
                                   FlLine(
-                                    color: const Color(0xFF10B981).withOpacity(0.5),
+                                    color: AppColors.accent.withOpacity(0.5),
                                     strokeWidth: 2,
                                     dashArray: [5, 5],
                                   ),
@@ -433,9 +434,9 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                     getDotPainter: (spot, percent, barData, index) {
                                       return FlDotCirclePainter(
                                         radius: 6,
-                                        color: Colors.white,
+                                        color: AppColors.surface,
                                         strokeWidth: 3,
-                                        strokeColor: const Color(0xFF10B981),
+                                        strokeColor: AppColors.accent,
                                       );
                                     },
                                   ),
@@ -457,7 +458,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                 getDotPainter: (spot, percent, barData, index) {
                                   return FlDotCirclePainter(
                                     radius: 4,
-                                    color: Colors.white,
+                                    color: AppColors.surface,
                                     strokeWidth: 2.5,
                                     strokeColor: const Color(0xFF10B981),
                                   );
@@ -467,8 +468,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                 show: true,
                                 gradient: LinearGradient(
                                   colors: [
-                                    const Color(0xFF10B981).withOpacity(0.3),
-                                    const Color(0xFF10B981).withOpacity(0.05),
+                                    AppColors.accent.withOpacity(0.3),
+                                    AppColors.accent.withOpacity(0.05),
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -488,7 +489,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.surface,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
@@ -572,7 +573,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                   style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFF1A1A1A),
+                                    color: AppColors.textPrimary,
                                   ),
                                 ),
                                 const SizedBox(height: 4),
@@ -580,7 +581,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                   product['unitsSold'],
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.grey[600],
+                                    color: AppColors.textSecondary,
                                   ),
                                 ),
                               ],
@@ -592,7 +593,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                             style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF1A1A1A),
+                              color: AppColors.textPrimary,
                             ),
                           ),
                         ],
@@ -610,7 +611,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                   width: 24,
                                   height: 24,
                                   child: CircularProgressIndicator(
-                                    color: Color(0xFF3B82F6),
+                                    color: AppColors.info,
                                     strokeWidth: 2.5,
                                   ),
                                 )
@@ -689,7 +690,7 @@ class _MetricCard extends StatelessWidget {
                   title,
                   style: TextStyle(
                     fontSize: 13,
-                    color: Colors.grey[600],
+                    color: AppColors.textSecondary,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -715,8 +716,8 @@ class _MetricCard extends StatelessWidget {
                       : Icons.arrow_downward,
                   size: 14,
                   color: isPositive == true
-                      ? const Color(0xFF10B981)
-                      : const Color(0xFFEF4444),
+                      ? AppColors.success
+                      : AppColors.error,
                 ),
                 const SizedBox(width: 4),
                 Text(
@@ -739,14 +740,14 @@ class _MetricCard extends StatelessWidget {
                   Icon(
                     Icons.arrow_forward,
                     size: 14,
-                    color: Colors.grey[600],
+                    color: AppColors.textSecondary,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     'View all',
                     style: TextStyle(
                       fontSize: 13,
-                      color: Colors.grey[600],
+                      color: AppColors.textSecondary,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
