@@ -15,14 +15,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _sellingPriceController = TextEditingController();
-  final TextEditingController _originalPriceController = TextEditingController();
+  final TextEditingController _originalPriceController =
+      TextEditingController();
   final TextEditingController _stockController = TextEditingController();
   final TextEditingController _skuController = TextEditingController();
   final TextEditingController _barcodeController = TextEditingController();
   final TextEditingController _expiryDateController = TextEditingController();
-  
+
   final ImagePicker _imagePicker = ImagePicker();
-  List<XFile> _selectedImages = [];
+  final List<XFile> _selectedImages = [];
   bool _isEditing = false;
 
   @override
@@ -35,7 +36,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   void _loadProductData() {
     // Simulate loading product data
     _nameController.text = 'Hydrating Face Cream';
-    _descriptionController.text = 'Enriched with Vitamin E and natural oils for deep hydration';
+    _descriptionController.text =
+        'Enriched with Vitamin E and natural oils for deep hydration';
     _sellingPriceController.text = '1500';
     _originalPriceController.text = '850';
     _stockController.text = '55';
@@ -59,7 +61,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   Future<void> _selectExpiryDate() async {
     if (!_isEditing) return;
-    
+
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -68,14 +70,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
     if (picked != null) {
       setState(() {
-        _expiryDateController.text = "${picked.day.toString().padLeft(2, '0')}/${picked.month.toString().padLeft(2, '0')}/${picked.year}";
+        _expiryDateController.text =
+            "${picked.day.toString().padLeft(2, '0')}/${picked.month.toString().padLeft(2, '0')}/${picked.year}";
       });
     }
   }
 
   void _showImageSourceDialog() {
     if (!_isEditing) return;
-    
+
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -97,10 +100,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             const SizedBox(height: 20),
             const Text(
               'Update Product Image',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 20),
             ListTile(
@@ -110,17 +110,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   color: const Color(0xFF6366F1).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(
-                  Icons.camera_alt,
-                  color: Color(0xFF6366F1),
-                ),
+                child: const Icon(Icons.camera_alt, color: Color(0xFF6366F1)),
               ),
               title: const Text(
                 'Take Photo',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
               subtitle: const Text('Use camera to take a photo'),
               onTap: () {
@@ -143,10 +137,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
               title: const Text(
                 'Choose from Gallery',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
               subtitle: const Text('Select from your photos'),
               onTap: () {
@@ -169,16 +160,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         maxHeight: 1920,
         imageQuality: 85,
       );
-      
+
       if (image != null) {
         setState(() {
           _selectedImages.add(image);
         });
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error picking image: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error picking image: $e')));
     }
   }
 
@@ -190,7 +181,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   Future<void> _scanBarcode() async {
     if (!_isEditing) return;
-    
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -231,7 +222,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Delete Product'),
-        content: const Text('Are you sure you want to delete this product? This action cannot be undone.'),
+        content: const Text(
+          'Are you sure you want to delete this product? This action cannot be undone.',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -248,9 +241,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
               );
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-            ),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),
         ],
@@ -433,7 +424,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   readOnly: !_isEditing,
                   suffixIcon: _isEditing
                       ? IconButton(
-                          icon: const Icon(Icons.qr_code_scanner, color: Color(0xFF10B981)),
+                          icon: const Icon(
+                            Icons.qr_code_scanner,
+                            color: Color(0xFF10B981),
+                          ),
                           onPressed: _scanBarcode,
                         )
                       : null,
@@ -449,7 +443,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   readOnly: true,
                   onTap: _selectExpiryDate,
                   suffixIcon: _isEditing
-                      ? const Icon(Icons.calendar_today, size: 20, color: Color(0xFF6B7280))
+                      ? const Icon(
+                          Icons.calendar_today,
+                          size: 20,
+                          color: Color(0xFF6B7280),
+                        )
                       : null,
                 ),
                 const SizedBox(height: 32),
@@ -531,11 +529,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         Row(
           children: [
             if (icon != null) ...[
-              Icon(
-                icon,
-                size: 18,
-                color: const Color(0xFF6B7280),
-              ),
+              Icon(icon, size: 18, color: const Color(0xFF6B7280)),
               const SizedBox(width: 8),
             ],
             RichText(
@@ -570,10 +564,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(
-              color: Colors.grey[400],
-              fontSize: 14,
-            ),
+            hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
             suffixIcon: suffixIcon,
             filled: true,
             fillColor: readOnly ? Colors.grey[100] : Colors.white,
@@ -634,11 +625,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             // Header with icon
             Row(
               children: [
-                Icon(
-                  Icons.image_outlined,
-                  size: 20,
-                  color: Colors.grey[700],
-                ),
+                Icon(Icons.image_outlined, size: 20, color: Colors.grey[700]),
                 const SizedBox(width: 8),
                 const Text(
                   'Product Images',
@@ -766,10 +753,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               const SizedBox(height: 12),
               Text(
                 'Supports: JPG, PNG, WEBP',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[500],
-                ),
+                style: TextStyle(fontSize: 12, color: Colors.grey[500]),
               ),
             ],
           ],
@@ -782,7 +766,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     if (_selectedImages.isEmpty) {
       return const SizedBox.shrink();
     }
-    
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -811,10 +795,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.file(
-              File(imageFile.path),
-              fit: BoxFit.cover,
-            ),
+            child: Image.file(File(imageFile.path), fit: BoxFit.cover),
           ),
         ),
         if (_isEditing)
@@ -828,11 +809,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   color: Colors.red,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
-                  Icons.close,
-                  size: 16,
-                  color: Colors.white,
-                ),
+                child: const Icon(Icons.close, size: 16, color: Colors.white),
               ),
               onPressed: () => _removeImage(index),
             ),
@@ -859,10 +836,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             const SizedBox(height: 4),
             Text(
               'Add More',
-              style: TextStyle(
-                fontSize: 10,
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(fontSize: 10, color: Colors.grey[600]),
             ),
           ],
         ),
@@ -909,10 +883,10 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
                   setState(() {
                     _isScanned = true;
                   });
-                  
+
                   final String code = barcodes.first.rawValue!;
                   widget.onBarcodeDetected(code);
-                  
+
                   // Show success feedback
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -921,7 +895,7 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
                       duration: const Duration(seconds: 1),
                     ),
                   );
-                  
+
                   // Delay before going back
                   Future.delayed(const Duration(milliseconds: 500), () {
                     if (mounted) {
@@ -938,10 +912,7 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
               width: 250,
               height: 250,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: const Color(0xFF10B981),
-                  width: 3,
-                ),
+                border: Border.all(color: const Color(0xFF10B981), width: 3),
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
@@ -960,10 +931,7 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
               child: const Text(
                 'Position the barcode within the frame',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
           ),

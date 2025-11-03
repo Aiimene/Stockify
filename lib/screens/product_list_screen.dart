@@ -14,7 +14,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   String _searchQuery = '';
   double? _minPrice;
   double? _maxPrice;
-  
+
   // Sample product data
   final List<Map<String, dynamic>> products = const [
     {
@@ -145,15 +145,19 @@ class _ProductListScreenState extends State<ProductListScreen> {
     // Apply search filter
     if (_searchQuery.isNotEmpty) {
       filtered = filtered.where((product) {
-        return product['name'].toLowerCase().contains(_searchQuery.toLowerCase());
+        return product['name'].toLowerCase().contains(
+          _searchQuery.toLowerCase(),
+        );
       }).toList();
     }
 
     // Apply price filter
     if (_minPrice != null || _maxPrice != null) {
       filtered = filtered.where((product) {
-        int price = int.parse(product['price'].replaceAll(RegExp(r'[^0-9]'), ''));
-        
+        int price = int.parse(
+          product['price'].replaceAll(RegExp(r'[^0-9]'), ''),
+        );
+
         if (_minPrice != null && price < _minPrice!) {
           return false;
         }
@@ -292,10 +296,16 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     },
                     decoration: InputDecoration(
                       hintText: 'Search products...',
-                      prefixIcon: const Icon(Icons.search, color: Color(0xFF6B7280)),
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Color(0xFF6B7280),
+                      ),
                       suffixIcon: _searchQuery.isNotEmpty
                           ? IconButton(
-                              icon: const Icon(Icons.clear, color: Color(0xFF6B7280)),
+                              icon: const Icon(
+                                Icons.clear,
+                                color: Color(0xFF6B7280),
+                              ),
                               onPressed: () {
                                 setState(() {
                                   _searchController.clear();
@@ -324,7 +334,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: IconButton(
-                    icon: const Icon(Icons.filter_list, color: Color(0xFF1A1A1A)),
+                    icon: const Icon(
+                      Icons.filter_list,
+                      color: Color(0xFF1A1A1A),
+                    ),
                     onPressed: _showFilterDialog,
                     tooltip: 'Filter',
                   ),
@@ -384,12 +397,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
                       ),
                     )
                   : GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 16,
-                        mainAxisSpacing: 16,
-                        childAspectRatio: 0.75,
-                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 16,
+                            mainAxisSpacing: 16,
+                            childAspectRatio: 0.75,
+                          ),
                       itemCount: filteredProducts.length,
                       itemBuilder: (context, index) {
                         final product = filteredProducts[index];
@@ -549,4 +563,3 @@ class _ProductListScreenState extends State<ProductListScreen> {
     );
   }
 }
-

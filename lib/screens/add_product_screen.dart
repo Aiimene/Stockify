@@ -15,14 +15,15 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _sellingPriceController = TextEditingController();
-  final TextEditingController _originalPriceController = TextEditingController();
+  final TextEditingController _originalPriceController =
+      TextEditingController();
   final TextEditingController _stockController = TextEditingController();
   final TextEditingController _skuController = TextEditingController();
   final TextEditingController _barcodeController = TextEditingController();
   final TextEditingController _expiryDateController = TextEditingController();
-  
+
   final ImagePicker _imagePicker = ImagePicker();
-  List<XFile> _selectedImages = [];
+  final List<XFile> _selectedImages = [];
 
   @override
   void dispose() {
@@ -46,7 +47,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
     );
     if (picked != null) {
       setState(() {
-        _expiryDateController.text = "${picked.day.toString().padLeft(2, '0')}/${picked.month.toString().padLeft(2, '0')}/${picked.year}";
+        _expiryDateController.text =
+            "${picked.day.toString().padLeft(2, '0')}/${picked.month.toString().padLeft(2, '0')}/${picked.year}";
       });
     }
   }
@@ -73,10 +75,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             const SizedBox(height: 20),
             const Text(
               'Add Product Image',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 20),
             ListTile(
@@ -86,17 +85,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   color: const Color(0xFF6366F1).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(
-                  Icons.camera_alt,
-                  color: Color(0xFF6366F1),
-                ),
+                child: const Icon(Icons.camera_alt, color: Color(0xFF6366F1)),
               ),
               title: const Text(
                 'Take Photo',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
               subtitle: const Text('Use camera to take a photo'),
               onTap: () {
@@ -119,10 +112,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               ),
               title: const Text(
                 'Choose from Gallery',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
               subtitle: const Text('Select from your photos'),
               onTap: () {
@@ -145,16 +135,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
         maxHeight: 1920,
         imageQuality: 85,
       );
-      
+
       if (image != null) {
         setState(() {
           _selectedImages.add(image);
         });
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error picking image: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error picking image: $e')));
     }
   }
 
@@ -312,7 +302,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   controller: _barcodeController,
                   hint: 'Enter barcode',
                   suffixIcon: IconButton(
-                    icon: const Icon(Icons.qr_code_scanner, color: Color(0xFF10B981)),
+                    icon: const Icon(
+                      Icons.qr_code_scanner,
+                      color: Color(0xFF10B981),
+                    ),
                     onPressed: _scanBarcode,
                   ),
                 ),
@@ -326,7 +319,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   hint: 'mm/dd/yyyy',
                   readOnly: true,
                   onTap: _selectExpiryDate,
-                  suffixIcon: const Icon(Icons.calendar_today, size: 20, color: Color(0xFF6B7280)),
+                  suffixIcon: const Icon(
+                    Icons.calendar_today,
+                    size: 20,
+                    color: Color(0xFF6B7280),
+                  ),
                 ),
                 const SizedBox(height: 32),
 
@@ -380,11 +377,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
         Row(
           children: [
             if (icon != null) ...[
-              Icon(
-                icon,
-                size: 18,
-                color: const Color(0xFF6B7280),
-              ),
+              Icon(icon, size: 18, color: const Color(0xFF6B7280)),
               const SizedBox(width: 8),
             ],
             RichText(
@@ -416,10 +409,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           onTap: onTap,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(
-              color: Colors.grey[400],
-              fontSize: 14,
-            ),
+            hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
             suffixIcon: suffixIcon,
             filled: true,
             fillColor: Colors.white,
@@ -476,11 +466,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             // Header with icon
             Row(
               children: [
-                Icon(
-                  Icons.image_outlined,
-                  size: 20,
-                  color: Colors.grey[700],
-                ),
+                Icon(Icons.image_outlined, size: 20, color: Colors.grey[700]),
                 const SizedBox(width: 8),
                 const Text(
                   'Product Images',
@@ -587,10 +573,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             const SizedBox(height: 12),
             Text(
               'Supports: JPG, PNG, WEBP',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey[500],
-              ),
+              style: TextStyle(fontSize: 12, color: Colors.grey[500]),
             ),
           ],
         ),
@@ -602,7 +585,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
     if (_selectedImages.isEmpty) {
       return const SizedBox.shrink();
     }
-    
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -631,10 +614,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.file(
-              File(imageFile.path),
-              fit: BoxFit.cover,
-            ),
+            child: Image.file(File(imageFile.path), fit: BoxFit.cover),
           ),
         ),
         Positioned(
@@ -647,11 +627,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 color: Colors.red,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.close,
-                size: 16,
-                color: Colors.white,
-              ),
+              child: const Icon(Icons.close, size: 16, color: Colors.white),
             ),
             onPressed: () => _removeImage(index),
           ),
@@ -678,10 +654,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             const SizedBox(height: 4),
             Text(
               'Add More',
-              style: TextStyle(
-                fontSize: 10,
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(fontSize: 10, color: Colors.grey[600]),
             ),
           ],
         ),
@@ -728,10 +701,10 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
                   setState(() {
                     _isScanned = true;
                   });
-                  
+
                   final String code = barcodes.first.rawValue!;
                   widget.onBarcodeDetected(code);
-                  
+
                   // Show success feedback
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -740,7 +713,7 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
                       duration: const Duration(seconds: 1),
                     ),
                   );
-                  
+
                   // Delay before going back
                   Future.delayed(const Duration(milliseconds: 500), () {
                     if (mounted) {
@@ -757,10 +730,7 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
               width: 250,
               height: 250,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: const Color(0xFF10B981),
-                  width: 3,
-                ),
+                border: Border.all(color: const Color(0xFF10B981), width: 3),
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
@@ -779,10 +749,7 @@ class _BarcodeScannerScreenState extends State<_BarcodeScannerScreen> {
               child: const Text(
                 'Position the barcode within the frame',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
           ),

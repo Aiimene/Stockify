@@ -12,20 +12,28 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   String selectedFilter = 'This Week';
   int displayedProductsCount = 5;
   bool isLoadingMore = false;
-  
+
   // Dummy data for weekly revenue
   final List<FlSpot> revenueData = [
-    const FlSpot(0, 35),  // Mon
-    const FlSpot(1, 60),  // Tue
-    const FlSpot(2, 30),  // Wed
-    const FlSpot(3, 55),  // Thu
-    const FlSpot(4, 45),  // Fri
-    const FlSpot(5, 25),  // Sat
-    const FlSpot(6, 15),  // Sun
+    const FlSpot(0, 35), // Mon
+    const FlSpot(1, 60), // Tue
+    const FlSpot(2, 30), // Wed
+    const FlSpot(3, 55), // Thu
+    const FlSpot(4, 45), // Fri
+    const FlSpot(5, 25), // Sat
+    const FlSpot(6, 15), // Sun
   ];
-  
-  final List<String> weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  
+
+  final List<String> weekDays = [
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun',
+  ];
+
   // Dummy data for top selling products (10 products total)
   final List<Map<String, dynamic>> topSellingProducts = [
     {
@@ -126,9 +134,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: Color(0xFF3B82F6),
-            ),
+            colorScheme: const ColorScheme.light(primary: Color(0xFF3B82F6)),
           ),
           child: child!,
         );
@@ -175,40 +181,37 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.grey[300]!),
                     ),
-                    child: Icon(
-                      Icons.tune,
-                      size: 20,
-                      color: Colors.grey[700],
-                    ),
+                    child: Icon(Icons.tune, size: 20, color: Colors.grey[700]),
                   ),
                   offset: const Offset(0, 45),
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                    const PopupMenuItem<String>(
-                      value: 'Today',
-                      child: Text('Today'),
-                    ),
-                    const PopupMenuItem<String>(
-                      value: 'This Week',
-                      child: Text('This Week'),
-                    ),
-                    const PopupMenuItem<String>(
-                      value: 'This Month',
-                      child: Text('This Month'),
-                    ),
-                    const PopupMenuItem<String>(
-                      value: 'This Year',
-                      child: Text('This Year'),
-                    ),
-                    const PopupMenuItem<String>(
-                      value: 'Custom',
-                      child: Text('Custom'),
-                    ),
-                  ],
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<String>>[
+                        const PopupMenuItem<String>(
+                          value: 'Today',
+                          child: Text('Today'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'This Week',
+                          child: Text('This Week'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'This Month',
+                          child: Text('This Month'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'This Year',
+                          child: Text('This Year'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'Custom',
+                          child: Text('Custom'),
+                        ),
+                      ],
                   onSelected: (String value) {
                     setState(() {
                       selectedFilter = value;
                     });
-                    
+
                     // If Custom is selected, show date picker
                     if (value == 'Custom') {
                       _showCustomDatePicker();
@@ -222,7 +225,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
               children: [
                 Expanded(
                   child: _MetricCard(
-                    icon: Icons.insert_chart_outlined, // Placeholder - replace with SVG
+                    icon: Icons
+                        .insert_chart_outlined, // Placeholder - replace with SVG
                     title: 'Total Revenue',
                     value: 'DA 1.25M',
                     percentageChange: '+15.2%',
@@ -232,7 +236,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 const SizedBox(width: 16),
                 Expanded(
                   child: _MetricCard(
-                    icon: Icons.shopping_bag_outlined, // Placeholder - replace with SVG
+                    icon: Icons
+                        .shopping_bag_outlined, // Placeholder - replace with SVG
                     title: 'Avg. Order Value',
                     value: 'DA 3,450',
                     percentageChange: '-1.8%',
@@ -246,7 +251,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
               children: [
                 Expanded(
                   child: _MetricCard(
-                    icon: Icons.inventory_2_outlined, // Placeholder - replace with SVG
+                    icon: Icons
+                        .inventory_2_outlined, // Placeholder - replace with SVG
                     title: 'Total Products',
                     value: '8,230',
                     showViewAll: true,
@@ -258,7 +264,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 const SizedBox(width: 16),
                 Expanded(
                   child: _MetricCard(
-                    icon: Icons.shopping_cart_outlined, // Placeholder - replace with SVG
+                    icon: Icons
+                        .shopping_cart_outlined, // Placeholder - replace with SVG
                     title: 'Total Orders',
                     value: '3,120',
                     percentageChange: '+5.7%',
@@ -360,10 +367,16 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                                 getTitlesWidget: (value, meta) {
                                   // Show only 5 labels: Mon, Tue, Thu, Sat, Sun
                                   final int index = value.toInt();
-                                  if (index == 0 || index == 1 || index == 3 || index == 5 || index == 6) {
+                                  if (index == 0 ||
+                                      index == 1 ||
+                                      index == 3 ||
+                                      index == 5 ||
+                                      index == 6) {
                                     if (index >= 0 && index < weekDays.length) {
                                       return Padding(
-                                        padding: const EdgeInsets.only(top: 10.0),
+                                        padding: const EdgeInsets.only(
+                                          top: 10.0,
+                                        ),
                                         child: Text(
                                           weekDays[index],
                                           style: TextStyle(
@@ -400,7 +413,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                           lineTouchData: LineTouchData(
                             enabled: true,
                             touchTooltipData: LineTouchTooltipData(
-                              getTooltipColor: (touchedSpot) => const Color(0xFF10B981),
+                              getTooltipColor: (touchedSpot) =>
+                                  const Color(0xFF10B981),
                               tooltipRoundedRadius: 8,
                               tooltipPadding: const EdgeInsets.symmetric(
                                 horizontal: 12,
@@ -424,20 +438,25 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                               return spotIndexes.map((spotIndex) {
                                 return TouchedSpotIndicatorData(
                                   FlLine(
-                                    color: const Color(0xFF10B981).withOpacity(0.5),
+                                    color: const Color(
+                                      0xFF10B981,
+                                    ).withOpacity(0.5),
                                     strokeWidth: 2,
                                     dashArray: [5, 5],
                                   ),
                                   FlDotData(
                                     show: true,
-                                    getDotPainter: (spot, percent, barData, index) {
-                                      return FlDotCirclePainter(
-                                        radius: 6,
-                                        color: Colors.white,
-                                        strokeWidth: 3,
-                                        strokeColor: const Color(0xFF10B981),
-                                      );
-                                    },
+                                    getDotPainter:
+                                        (spot, percent, barData, index) {
+                                          return FlDotCirclePainter(
+                                            radius: 6,
+                                            color: Colors.white,
+                                            strokeWidth: 3,
+                                            strokeColor: const Color(
+                                              0xFF10B981,
+                                            ),
+                                          );
+                                        },
                                   ),
                                 );
                               }).toList();
@@ -514,7 +533,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: displayedProductsCount,
-                    separatorBuilder: (context, index) => const SizedBox(height: 16),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16),
                     itemBuilder: (context, index) {
                       final product = topSellingProducts[index];
                       return Row(
@@ -678,11 +698,7 @@ class _MetricCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(
-                icon,
-                size: 20,
-                color: Colors.grey[600],
-              ),
+              Icon(icon, size: 20, color: Colors.grey[600]),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
@@ -736,11 +752,7 @@ class _MetricCard extends StatelessWidget {
               onTap: onViewAllTap,
               child: Row(
                 children: [
-                  Icon(
-                    Icons.arrow_forward,
-                    size: 14,
-                    color: Colors.grey[600],
-                  ),
+                  Icon(Icons.arrow_forward, size: 14, color: Colors.grey[600]),
                   const SizedBox(width: 4),
                   Text(
                     'View all',
