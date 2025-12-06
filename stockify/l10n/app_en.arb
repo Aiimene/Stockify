@@ -1,0 +1,118 @@
+{
+  "@@locale": "en",
+  "appName": "StockiFy",
+  "@appName": {
+    "description": "The application name"
+  },
+  "welcome": "Welcome",
+  "login": "Login",
+  "signup": "Sign Up",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "fullName": "Full Name",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAccount": "Don't have an account?",
+  "alreadyHaveAccount": "Already have an account?",
+  "dashboard": "Dashboard",
+  "products": "Products",
+  "orders": "Orders",
+  "analytics": "Analytics",
+  "profile": "Profile",
+  "settings": "Settings",
+  "addProduct": "Add Product",
+  "editProduct": "Edit Product",
+  "deleteProduct": "Delete Product",
+  "productName": "Product Name",
+  "sku": "SKU",
+  "barcode": "Barcode",
+  "description": "Description",
+  "costPrice": "Cost Price",
+  "sellingPrice": "Selling Price",
+  "stockQuantity": "Stock Quantity",
+  "lowStockThreshold": "Low Stock Threshold",
+  "expiryDate": "Expiry Date",
+  "image": "Image",
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "view": "View",
+  "add": "Add",
+  "search": "Search",
+  "filter": "Filter",
+  "totalRevenue": "Total Revenue",
+  "totalOrders": "Total Orders",
+  "totalProducts": "Total Products",
+  "averageOrderValue": "Avg. Order Value",
+  "lowStockCount": "Low Stock Count",
+  "revenueTrends": "Revenue Trends",
+  "topSellingProducts": "Top Selling Products",
+  "lowStockAlerts": "Low Stock Alerts",
+  "recentActivities": "Recent Activities",
+  "newSale": "New Sale",
+  "orderNumber": "Order Number",
+  "orderDate": "Order Date",
+  "orderStatus": "Order Status",
+  "paymentMethod": "Payment Method",
+  "totalAmount": "Total Amount",
+  "completed": "Completed",
+  "refunded": "Refunded",
+  "cash": "Cash",
+  "card": "Card",
+  "notifications": "Notifications",
+  "subscription": "Subscription",
+  "billing": "Billing",
+  "help": "Help",
+  "privacy": "Privacy Policy",
+  "language": "Language",
+  "logout": "Logout",
+  "editProfile": "Edit Profile",
+  "changePassword": "Change Password",
+  "currentPassword": "Current Password",
+  "newPassword": "New Password",
+  "confirmNewPassword": "Confirm New Password",
+  "update": "Update",
+  "viewAll": "View All",
+  "unitsSold": "{count} units sold",
+  "@unitsSold": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "onlyLeft": "Only {count} left",
+  "@onlyLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "outOfStock": "Out of stock",
+  "noDataAvailable": "No data available",
+  "loading": "Loading...",
+  "error": "Error",
+  "success": "Success",
+  "pleaseEnter": "Please enter {field}",
+  "@pleaseEnter": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "invalidEmail": "Please enter a valid email address",
+  "passwordTooShort": "Password must be at least 8 characters",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "languageChanged": "Language changed to {language}",
+  "@languageChanged": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  }
+}
+

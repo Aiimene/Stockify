@@ -1,0 +1,11 @@
+-- Database Compatibility Fixes
+-- Based on the actual database schema (u161640253_stockify.sql)
+-- 
+-- The database uses user_id directly in products and orders tables
+-- No business_id column exists in users, products, or orders tables
+--
+-- All backend APIs have been updated to use user_id instead of business_id
+-- All Flutter models have been updated to use userId instead of businessId
+--
+-- No database changes needed - the current schema is correct!
+

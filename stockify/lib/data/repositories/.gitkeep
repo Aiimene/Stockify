@@ -1,0 +1,4 @@
+# This file ensures the repositories directory is tracked by Git
+# Place repository files here (ProductRepository, OrderRepository, etc.)
+
+

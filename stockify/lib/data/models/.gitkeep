@@ -1,0 +1,4 @@
+# This file ensures the models directory is tracked by Git
+# Place data model files here (Product, Order, User, etc.)
+
+

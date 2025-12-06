@@ -1,0 +1,4 @@
+# This file ensures the cubits directory is tracked by Git
+# Place state management cubits here (ProductCubit, OrderCubit, etc.)
+
+
